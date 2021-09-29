@@ -7,7 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public int gold;
     public bool gameOver;
+
     
+
+    
+
     // Start is called before the first frame update
     void Start()
     {

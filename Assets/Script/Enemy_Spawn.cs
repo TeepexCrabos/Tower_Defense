@@ -15,12 +15,21 @@ public class Enemy_Spawn : MonoBehaviour
     public GameObject PrefEnemy;
     public GameObject PrefTower;
     public GameManager manager;
+    public RectTransform[] tour = new RectTransform[10];
+    public int j = 0;
+
+    public RectTransform rect;
+    Vector2 vec;
+    public Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         newPos = new Vector3(-10.0f, 0.0f, 0.0f);
         timeUntilSpawn = 0;
         timeUntilSpawnTower = 0;
+       
     }
 
     // Update is called once per frame
@@ -37,49 +46,63 @@ public class Enemy_Spawn : MonoBehaviour
         timeUntilSpawnTower -= Time.deltaTime;
     }
 
+   
+
     void OnGUI()
     {
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
-        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject() && manager.gold >= 100 && mouseWorldPos.y < -0.5)
+        if (Input.GetMouseButtonUp(0) && manager.gold >= 100 && mouseWorldPos.y < -0.5 )
         {
             
-            if (timeUntilSpawnTower <= 0)
+            if (timeUntilSpawnTower <= 0 && j <10 && verif(mouseWorldPos) == false)
             {
+                
                 manager.gold -= 100;
-                Event currentEvent = Event.current;
-                Vector2 mousePos = new Vector2();
-                Vector3 point = new Vector3();
-
-
-                mousePos.x = currentEvent.mousePosition.x;
-                mousePos.y = GetComponent<Camera>().pixelHeight - currentEvent.mousePosition.y;
-                point = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0.0f));
 
                 GameObject autre = Instantiate(PrefTower, mouseWorldPos, Quaternion.identity) as GameObject;
+                
+                tour[j] = autre.GetComponent<RectTransform>();
+                j = j + 1;
                 timeUntilSpawnTower = spawnTowerCooldown;
             }
         }
-        if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject() && manager.gold >= 100 && mouseWorldPos.y > 0.5)
+
+        if (Input.GetMouseButtonUp(0) && manager.gold >= 100 && mouseWorldPos.y > 0.5 )
         {
             
-            if (timeUntilSpawnTower <= 0)
+            if (timeUntilSpawnTower <= 0 && j < 10 && verif(mouseWorldPos) == false)
             {
             manager.gold -= 100;
-            Event currentEvent = Event.current;
-            Vector2 mousePos = new Vector2();
-            Vector3 point = new Vector3();
 
-
-            mousePos.x = currentEvent.mousePosition.x;
-            mousePos.y = GetComponent<Camera>().pixelHeight - currentEvent.mousePosition.y;
-            point = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0.0f));
-
-           
-                GameObject autre = Instantiate(PrefTower, mouseWorldPos, Quaternion.identity) as GameObject;
-                timeUntilSpawnTower = spawnTowerCooldown;
+             GameObject autre = Instantiate(PrefTower, mouseWorldPos, Quaternion.identity) as GameObject;
+             timeUntilSpawnTower = spawnTowerCooldown;
+             tour[j] = autre.GetComponent<RectTransform>();
+             j = j + 1;
+            
             }
         }
+    }
+   
+
+    public bool verif(Vector2 mouseWorldPos)
+    {
+        for(int i=0;i < tour.Length; i++)
+        {
+            Debug.Log("Boucle verif");
+            Debug.Log(rect);
+            Debug.Log(tour[i]);
+            
+            if (RectTransformUtility.RectangleContainsScreenPoint(tour[i], mouseWorldPos, cam) == false)
+            {
+
+                Debug.Log("faux");
+                return true;
+          
+            }
+        }
+        Debug.Log("vrai");
+        return false;
     }
 }

@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630bb4a9c95034b4fa5deb00781c2746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 200
+  gold: 2000
   gameOver: 1
