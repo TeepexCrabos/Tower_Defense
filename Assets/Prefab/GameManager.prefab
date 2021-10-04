@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 2000
-  gameOver: 1
+  gameOver: 0

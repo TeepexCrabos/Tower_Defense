@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.9433962, g: 0.07564971, b: 0.07564971, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 08c341d8323489749beeff5eeaca9635, type: 3}
+  m_Color: {r: 0.21176471, g: 0.17254902, b: 0.10980392, a: 0.36078432}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.89, y: 1.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -123,7 +123,6 @@ MonoBehaviour:
   tower: {fileID: 5929228102990757228}
   rect: {fileID: 6855021490990564831}
   cam: {fileID: 5961195790555542065, guid: e02e48da72376394eb78c86ce0c5a2b8, type: 3}
-  spawn: {fileID: 772632745943401616, guid: abb6cf3353b53d04da5ede125b2914cb, type: 3}
   tour:
   - {x: 0, y: 0}
   - {x: 0, y: 0}

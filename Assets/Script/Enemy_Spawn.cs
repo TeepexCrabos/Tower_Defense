@@ -56,7 +56,7 @@ public class Enemy_Spawn : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && manager.gold >= 100 && mouseWorldPos.y < -0.5 )
         {
             
-            if (timeUntilSpawnTower <= 0 && j <10 && verif(mouseWorldPos) == false)
+            if (timeUntilSpawnTower <= 0 && j <10 )
             {
                 
                 manager.gold -= 100;
@@ -72,7 +72,7 @@ public class Enemy_Spawn : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && manager.gold >= 100 && mouseWorldPos.y > 0.5 )
         {
             
-            if (timeUntilSpawnTower <= 0 && j < 10 && verif(mouseWorldPos) == false)
+            if (timeUntilSpawnTower <= 0 && j < 10 )
             {
             manager.gold -= 100;
 
@@ -86,7 +86,7 @@ public class Enemy_Spawn : MonoBehaviour
     }
    
 
-    public bool verif(Vector2 mouseWorldPos)
+    /*public bool verif(Vector2 mouseWorldPos)
     {
         for(int i=0;i < tour.Length; i++)
         {
@@ -104,5 +104,5 @@ public class Enemy_Spawn : MonoBehaviour
         }
         Debug.Log("vrai");
         return false;
-    }
+    }*/
 }
